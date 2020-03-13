@@ -1,0 +1,11 @@
+C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\bin\Debug\ConsultaErgonTech.exe.config
+C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\bin\Debug\ConsultaErgonTech.exe
+C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\bin\Debug\ConsultaErgonTech.pdb
+C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\bin\Debug\Bunifu_UI_v1.52.dll
+C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\obj\Debug\ConsultaErgonTech.csprojAssemblyReference.cache
+C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\obj\Debug\ConsultaErgonTech.Form1.resources
+C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\obj\Debug\ConsultaErgonTech.Properties.Resources.resources
+C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\obj\Debug\ConsultaErgonTech.csproj.GenerateResource.cache
+C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\obj\Debug\ConsultaErgonTech.csproj.CopyComplete
+C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\obj\Debug\ConsultaErgonTech.exe
+C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\obj\Debug\ConsultaErgonTech.pdb
