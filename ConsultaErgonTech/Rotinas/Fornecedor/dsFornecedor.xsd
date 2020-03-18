@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsFornecedor" targetNamespace="http://tempuri.org/dsFornecedor.xsd" xmlns:mstns="http://tempuri.org/dsFornecedor.xsd" xmlns="http://tempuri.org/dsFornecedor.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsFornecedor" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsFornecedor" msprop:Generator_UserDSName="dsFornecedor">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="fornecedor" msprop:Generator_TableClassName="fornecedorDataTable" msprop:Generator_TableVarName="tablefornecedor" msprop:Generator_RowChangedName="fornecedorRowChanged" msprop:Generator_TablePropName="fornecedor" msprop:Generator_RowDeletingName="fornecedorRowDeleting" msprop:Generator_RowChangingName="fornecedorRowChanging" msprop:Generator_RowEvHandlerName="fornecedorRowChangeEventHandler" msprop:Generator_RowDeletedName="fornecedorRowDeleted" msprop:Generator_RowClassName="fornecedorRow" msprop:Generator_UserTableName="fornecedor" msprop:Generator_RowEvArgName="fornecedorRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cod" msprop:Generator_ColumnVarNameInTable="columncod" msprop:Generator_ColumnPropNameInRow="cod" msprop:Generator_ColumnPropNameInTable="codColumn" msprop:Generator_UserColumnName="cod" type="xs:string" minOccurs="0" />
+              <xs:element name="razao" msprop:Generator_ColumnVarNameInTable="columnrazao" msprop:Generator_ColumnPropNameInRow="razao" msprop:Generator_ColumnPropNameInTable="razaoColumn" msprop:Generator_UserColumnName="razao" type="xs:string" minOccurs="0" />
+              <xs:element name="fantasia" msprop:Generator_ColumnVarNameInTable="columnfantasia" msprop:Generator_ColumnPropNameInRow="fantasia" msprop:Generator_ColumnPropNameInTable="fantasiaColumn" msprop:Generator_UserColumnName="fantasia" type="xs:string" minOccurs="0" />
+              <xs:element name="cpfcnpj" msprop:Generator_ColumnVarNameInTable="columncpfcnpj" msprop:Generator_ColumnPropNameInRow="cpfcnpj" msprop:Generator_ColumnPropNameInTable="cpfcnpjColumn" msprop:Generator_UserColumnName="cpfcnpj" type="xs:string" minOccurs="0" />
+              <xs:element name="telefone" msprop:Generator_ColumnVarNameInTable="columntelefone" msprop:Generator_ColumnPropNameInRow="telefone" msprop:Generator_ColumnPropNameInTable="telefoneColumn" msprop:Generator_UserColumnName="telefone" type="xs:string" minOccurs="0" />
+              <xs:element name="uf" msprop:Generator_ColumnVarNameInTable="columnuf" msprop:Generator_ColumnPropNameInRow="uf" msprop:Generator_ColumnPropNameInTable="ufColumn" msprop:Generator_UserColumnName="uf" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
