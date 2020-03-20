@@ -44,5 +44,33 @@ namespace ConsultaErgonTech.Rotinas.Fornecedor
             main.tbxNomeFornecedor.Text = dgvFornecedor.CurrentRow.Cells[1].Value.ToString();
             Close();
         }
+
+        private void tbxPalavraChave_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    btnInserir_Click(sender, e);
+                }
+
+                if (dgvFornecedor.Focused == false)
+                {
+                    if (e.KeyCode == Keys.Up)
+                    {
+                        int i = dgvFornecedor.CurrentRow.Index - 1;
+                        dgvFornecedor.CurrentCell = dgvFornecedor.Rows[i].Cells[0];
+                    }
+                    else if (e.KeyCode == Keys.Down)
+                    {
+                        int i = dgvFornecedor.CurrentRow.Index + 1;
+                        dgvFornecedor.CurrentCell = dgvFornecedor.Rows[i].Cells[0];
+                    }
+                }
+            }
+            catch
+            {
+            }
+        }
     }
 }

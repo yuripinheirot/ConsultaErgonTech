@@ -126,7 +126,54 @@
   <metadata name="pedidosBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>108, 17</value>
   </metadata>
-  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="codGrupo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="comprasBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>483, 17</value>
   </metadata>
+  <metadata name="report1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>660, 17</value>
+  </metadata>
+  <data name="report1.ReportResourceString" xml:space="preserve">
+    <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="03/19/2020 17:38:10" ReportInfo.Modified="03/20/2020 11:17:33" ReportInfo.CreatorVersion="2020.1.28.0"&gt;
+  &lt;Dictionary&gt;
+    &lt;TableDataSource Name="compras" ReferenceName="dsMain.compras" DataType="System.Int32" Enabled="true"&gt;
+      &lt;Column Name="codProduto" DataType="System.String"/&gt;
+      &lt;Column Name="descProduto" DataType="System.String"/&gt;
+      &lt;Column Name="numero" DataType="System.String"/&gt;
+      &lt;Column Name="numero1" DataType="System.String"/&gt;
+      &lt;Column Name="numero2" DataType="System.String"/&gt;
+      &lt;Column Name="numero3" DataType="System.String"/&gt;
+      &lt;Column Name="numero4" DataType="System.String"/&gt;
+      &lt;Column Name="reffornecedor" DataType="System.String"/&gt;
+      &lt;Column Name="estoqueEco" DataType="System.String"/&gt;
+      &lt;Column Name="fornecedor" DataType="System.String"/&gt;
+      &lt;Column Name="qtdVendida" DataType="System.String"/&gt;
+      &lt;Column Name="precoCompra" DataType="System.String"/&gt;
+      &lt;Column Name="precoVenda" DataType="System.String"/&gt;
+      &lt;Column Name="dataUltimaCompra" DataType="System.String"/&gt;
+      &lt;Column Name="qtdUltimaEnt" DataType="System.String"/&gt;
+      &lt;Column Name="dataUltimaVenda" DataType="System.String"/&gt;
+      &lt;Column Name="descGrupo" DataType="System.String"/&gt;
+      &lt;Column Name="codGrupo" DataType="System.String"/&gt;
+    &lt;/TableDataSource&gt;
+  &lt;/Dictionary&gt;
+  &lt;ReportPage Name="Page1" Landscape="true" PaperWidth="297" PaperHeight="210" RawPaperSize="9" FirstPageSource="15" OtherPagesSource="15" Watermark.Font="Arial, 60pt"&gt;
+    &lt;ReportTitleBand Name="ReportTitle1" Width="1047.06" Height="37.8"/&gt;
+    &lt;PageHeaderBand Name="PageHeader1" Top="41.8" Width="1047.06" Height="28.35"/&gt;
+    &lt;GroupHeaderBand Name="GroupHeader1" Top="74.15" Width="1047.06" Height="37.8" Condition="[compras.codProduto]"&gt;
+      &lt;TextObject Name="Text1" Left="47.25" Width="94.5" Height="18.9" Text="[[compras.codProduto]]" Font="Arial, 10pt"/&gt;
+      &lt;DataBand Name="Data1" Top="115.95" Width="1047.06" Height="56.7"&gt;
+        &lt;TextObject Name="Text2" Left="46.55" Top="11.05" Width="94.5" Height="18.9" Text="[compras.codProduto]" Font="Arial, 10pt"/&gt;
+        &lt;TextObject Name="Text3" Left="168" Top="15.15" Width="94.5" Height="18.9" Text="[compras.descProduto]" Font="Arial, 10pt"/&gt;
+      &lt;/DataBand&gt;
+      &lt;GroupFooterBand Name="GroupFooter1" Top="176.65" Width="1047.06" Height="37.8"/&gt;
+    &lt;/GroupHeaderBand&gt;
+    &lt;PageFooterBand Name="PageFooter1" Top="218.45" Width="1047.06" Height="18.9"/&gt;
+  &lt;/ReportPage&gt;
+&lt;/Report&gt;
+</value>
+  </data>
 </root>

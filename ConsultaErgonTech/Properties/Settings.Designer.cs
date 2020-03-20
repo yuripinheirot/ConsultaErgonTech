@@ -25,13 +25,36 @@ namespace ConsultaErgonTech.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data source=YURI;\r\nInitial Catalog=BD_NAUTICA;\r\nUID=sa;\r\npwd=masterkey")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data source=YURI;\r\nInitial Catalog=BD_TRATORPECAS;\r\nUID=sa;\r\npwd=masterkey")]
         public string sqlserver {
             get {
                 return ((string)(this["sqlserver"]));
             }
             set {
                 this["sqlserver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"User=SYSDBA;   
+ Password=masterkey;   
+ Database=d:\dados\tratorpecas\ecodados.eco;   
+ DataSource=localhost;   
+ Port=3050;   
+ Dialect=3;   
+ Charset=NONE;   
+ Role=;   
+ Connection lifetime=15;   
+ Pooling=true;   
+ Packet Size=8192;   
+ ServerType=0 ;")]
+        public string firebird {
+            get {
+                return ((string)(this["firebird"]));
+            }
+            set {
+                this["firebird"] = value;
             }
         }
     }

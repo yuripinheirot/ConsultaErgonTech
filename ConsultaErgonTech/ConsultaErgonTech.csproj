@@ -32,9 +32,20 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>search_locate_find_icon-icons.com_67287.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accessibility" />
     <Reference Include="Bunifu_UI_v1.52">
       <HintPath>D:\@Yuri\Programas\bunifu\Bunifu_UI_v1.52.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport, Version=2020.1.28.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\FastReports\FastReport.Net Trial\FastReport.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport.Data.MySql, Version=2020.2.0.0, Culture=neutral, PublicKeyToken=b33a9a06fcc00c4c, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastReport.Data.MySql.2020.2.0\lib\net40\FastReport.Data.MySql.dll</HintPath>
     </Reference>
     <Reference Include="FirebirdSql.Data.FirebirdClient, Version=7.5.0.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
       <HintPath>..\packages\FirebirdSql.Data.FirebirdClient.7.5.0\lib\net452\FirebirdSql.Data.FirebirdClient.dll</HintPath>
@@ -48,10 +59,17 @@
     <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.7.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.7.9\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,6 +82,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main\dataMain.cs" />
+    <Compile Include="Main\dsMain.cs">
+      <DependentUpon>dsMain.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Main\dsMain.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -101,6 +122,18 @@
     <Compile Include="Rotinas\Fornecedor\frmMainFornecedor.Designer.cs">
       <DependentUpon>frmMainFornecedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Rotinas\Grupo\dataGrupo.cs" />
+    <Compile Include="Rotinas\Grupo\dsGrupo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsGrupo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Rotinas\Grupo\frmMainGrupo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rotinas\Grupo\frmMainGrupo.Designer.cs">
+      <DependentUpon>frmMainGrupo.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Main\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Rotinas\Fornecedor\frmMainFornecedor.resx">
       <DependentUpon>frmMainFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rotinas\Grupo\frmMainGrupo.resx">
+      <DependentUpon>frmMainGrupo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Main\dsMain.xsc">
       <DependentUpon>dsMain.xsd</DependentUpon>
@@ -163,6 +199,17 @@
     <None Include="Rotinas\Fornecedor\dsFornecedor.xss">
       <DependentUpon>dsFornecedor.xsd</DependentUpon>
     </None>
+    <None Include="Rotinas\Grupo\dsGrupo.xsc">
+      <DependentUpon>dsGrupo.xsd</DependentUpon>
+    </None>
+    <None Include="Rotinas\Grupo\dsGrupo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsGrupo.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Rotinas\Grupo\dsGrupo.xss">
+      <DependentUpon>dsGrupo.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -177,7 +224,7 @@
     <None Include="Resources\delete_32px.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Rotinas\NewFolder1\" />
+    <Content Include="search_locate_find_icon-icons.com_67287.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\microsoft_excel_32px.png" />

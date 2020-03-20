@@ -32,22 +32,24 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainFornecedor));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnInserir = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tbxPalavraChave = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.lblFornecedores = new MetroFramework.Controls.MetroLabel();
             this.dgvFornecedor = new Bunifu.Framework.UI.BunifuCustomDataGrid();
-            this.fornecedorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsFornecedor = new ConsultaErgonTech.Rotinas.Fornecedor.dsFornecedor();
             this.codDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fantasia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.razaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cpfcnpjDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ufDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fornecedorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsFornecedor = new ConsultaErgonTech.Rotinas.Fornecedor.dsFornecedor();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFornecedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsFornecedor)).BeginInit();
@@ -120,6 +122,7 @@
             this.tbxPalavraChave.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbxPalavraChave.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.tbxPalavraChave.TextChanged += new System.EventHandler(this.tbxPalavraChave_TextChanged);
+            this.tbxPalavraChave.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxPalavraChave_KeyDown);
             // 
             // metroLabel2
             // 
@@ -172,14 +175,14 @@
             this.telefoneDataGridViewTextBoxColumn,
             this.ufDataGridViewTextBoxColumn});
             this.dgvFornecedor.DataSource = this.fornecedorBindingSource;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFornecedor.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFornecedor.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvFornecedor.DoubleBuffered = true;
             this.dgvFornecedor.EnableHeadersVisualStyles = false;
             this.dgvFornecedor.GridColor = System.Drawing.Color.Silver;
@@ -189,32 +192,22 @@
             this.dgvFornecedor.Name = "dgvFornecedor";
             this.dgvFornecedor.ReadOnly = true;
             this.dgvFornecedor.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFornecedor.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFornecedor.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvFornecedor.RowHeadersWidth = 20;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvFornecedor.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvFornecedor.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvFornecedor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvFornecedor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFornecedor.Size = new System.Drawing.Size(751, 265);
             this.dgvFornecedor.TabIndex = 7;
-            // 
-            // fornecedorBindingSource
-            // 
-            this.fornecedorBindingSource.DataMember = "fornecedor";
-            this.fornecedorBindingSource.DataSource = this.dsFornecedor;
-            // 
-            // dsFornecedor
-            // 
-            this.dsFornecedor.DataSetName = "dsFornecedor";
-            this.dsFornecedor.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // codDataGridViewTextBoxColumn
             // 
@@ -227,6 +220,8 @@
             // fantasia
             // 
             this.fantasia.DataPropertyName = "fantasia";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.fantasia.DefaultCellStyle = dataGridViewCellStyle3;
             this.fantasia.HeaderText = "Fantasia";
             this.fantasia.Name = "fantasia";
             this.fantasia.ReadOnly = true;
@@ -235,6 +230,8 @@
             // razaoDataGridViewTextBoxColumn
             // 
             this.razaoDataGridViewTextBoxColumn.DataPropertyName = "razao";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.razaoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.razaoDataGridViewTextBoxColumn.HeaderText = "Razão";
             this.razaoDataGridViewTextBoxColumn.Name = "razaoDataGridViewTextBoxColumn";
             this.razaoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -262,6 +259,16 @@
             this.ufDataGridViewTextBoxColumn.ReadOnly = true;
             this.ufDataGridViewTextBoxColumn.Width = 40;
             // 
+            // fornecedorBindingSource
+            // 
+            this.fornecedorBindingSource.DataMember = "fornecedor";
+            this.fornecedorBindingSource.DataSource = this.dsFornecedor;
+            // 
+            // dsFornecedor
+            // 
+            this.dsFornecedor.DataSetName = "dsFornecedor";
+            this.dsFornecedor.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // frmMainFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,6 +284,7 @@
             this.MinimizeBox = false;
             this.Name = "frmMainFornecedor";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fornecedores";
             this.Load += new System.EventHandler(this.frmMainFornecedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFornecedor)).EndInit();

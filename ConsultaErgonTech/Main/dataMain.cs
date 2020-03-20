@@ -102,5 +102,167 @@ namespace ConsultaErgonTech.Main
 
         }
 
+        //ESTOQUE
+        public static void AtualizaDgvCompra(BunifuCustomDataGrid dgv, string grupo, string fornecedor, string dti, string dtf, FastReport.Report rpt)
+        {
+            try
+            {
+                conexao = new SqlConnection(server);
+                conexao.Open();
+                string query =
+                    "select	distinct                        									    " +
+                    "																			    " +
+                    "pdt.codigo as codProduto,                                                      " +
+                    "pdt.Descricao as descProduto,                                                  " +
+                    "pdt.Numero,                                                                    " +
+                    "pdt.Numero1,                                                                   " +
+                    "pdt.Numero2,                                                                   " +
+                    "pdt.Numero3,                                                                   " +
+                    "pdt.Numero4,                                                                   " +
+                    "pdt.RefFornecedor,                                                             " +
+                    "'' as estoqueEco,                                                              " +
+                    "                                                                               " +
+                    "(SELECT                                                                        " +
+                    "sum(a.Qtd)                                                                     " +
+                    "from ItemsVenda a                                                              " +
+                    "left outer join vendas b on (a.Codigo  = b.Codigo )                            " +
+                    "where                                                                          " +
+                    "b.[Data] between @dti and @dtf                                                 " +
+                    "and a.Produto  = pdt.Codigo                                                    " +
+                    "and a.Cancelada  = 0) as qtdVendida,                                           " +
+                    "                                                                               " +
+                    "pdt.PrecoCompra,                                                               " +
+                    "pdt.PrecoVenda,                                                                " +
+                    "                                                                               " +
+                    "(select top 1                                                                  " +
+                    "nfe.Cliente                                                                    " +
+                    "from NFItemsEntrada nie                                                        " +
+                    "left outer join NotasFiscaisEntrada nfe on (nie.NumeroNF = nfe.NumeroNF and    " +
+                    "                                            nie.Modelo = nfe.Modelo and        " +
+                    "											nie.Serie = nfe.Serie)              " +
+                    "where                                                                          " +
+                   $"nie.Produto = pdt.Codigo {fornecedor}                                          " +
+                    "order by nfe.DataLanc desc) as fornecedor,                                     " +
+                    "                                                                               " +
+                    "(select top 1                                                                  " +
+                    "cast(nfe.DataLanc as date) as DataLanc                                         " +
+                    "from NFItemsEntrada nie                                                        " +
+                    "left outer join NotasFiscaisEntrada nfe on (nie.NumeroNF = nfe.NumeroNF and    " +
+                    "                                            nie.Modelo = nfe.Modelo and        " +
+                    "											nie.Serie = nfe.Serie)              " +
+                    "where                                                                          " +
+                   $"nie.Produto = pdt.Codigo {fornecedor}                                          " +
+                    "order by nfe.DataLanc desc) as DataUltimaCompra,                               " +
+                    "                                                                               " +
+                    "(select top 1                                                                  " +
+                    "nie.Qtd                                                                        " +
+                    "from NFItemsEntrada nie                                                        " +
+                    "left outer join NotasFiscaisEntrada nfe on (nie.NumeroNF = nfe.NumeroNF and    " +
+                    "                                            nie.Modelo = nfe.Modelo and        " +
+                    "											nie.Serie = nfe.Serie)              " +
+                    "where                                                                          " +
+                   $"nie.Produto = pdt.Codigo   {fornecedor}                                        " +
+                    "order by nfe.DataLanc desc) as qtdUltimaEnt,                                   " +
+                    "                                                                               " +
+                    "(select top 1                                                                  " +
+                    "cast(a.Data as date)                                                           " +
+                    "from Vendas a                                                                  " +
+                    "inner join ItemsVenda b on (a.Codigo = b.Codigo)                               " +
+                    "where b.Produto = pdt.Codigo                                                   " +
+                    "order by a.Data desc) as DataUltimaVenda,                                      " +
+                    "                                                                               " +
+                    "grp.Codigo as codGrupo,                                                        " +
+                    "grp.Descricao as descGrupo                                                     " +
+                    "																			    " +
+                    "                                                                               " +
+                    "from produtos pdt                                                              " +
+                    "left outer join NFItemsEntrada nie on (pdt.Codigo = nie.Produto)               " +
+                    "left outer join NotasFiscaisEntrada nfe on (nie.NumeroNF = nfe.NumeroNF and    " +
+                    "                                            nie.Modelo = nfe.Modelo and        " +
+                    "											nie.Serie = nfe.Serie)              " +
+                    "left outer join ItemsVenda ivd on (pdt.Codigo = ivd.Codigo)	                " +
+                    "left outer join Fornecedor fcd on (nfe.Cliente = fcd.Codigo)                   " +
+                    "left outer join GrupoProdutos grp on (pdt.Grupo = grp.codigo)                  " +
+                    "WHERE                                                                          " +
+                    "nfe.DataLanc between @dti and @dtf                                             " + 
+                    grupo + fornecedor;
+
+                SqlCommand cmd = new SqlCommand(query, conexao);
+                cmd.Parameters.AddWithValue("@dti", dti);
+                cmd.Parameters.AddWithValue("@dtf", dtf);
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                DataTable table = new DataTable();
+                adapter.SelectCommand = cmd;
+                adapter.Fill(table);
+                
+
+                dgv.DataSource = table;
+            }
+            catch (Exception erro)
+            {
+                throw erro;
+            }
+            finally
+            {
+                conexao.Close();
+            }
+
+        }
+
+        public async static void estoqueEco(BunifuCustomDataGrid dgv, BunifuProgressBar pbr)
+        {
+            try
+            {
+                string codigos = "";
+                dgv.Rows.Cast<DataGridViewRow>().ToList().ForEach(p => codigos += p.Cells[0].Value.ToString() + ",");
+                codigos = codigos.Substring(0, codigos.Length - 1);
+                List<KeyValuePair<string, string>> pdtEstoque = new List<KeyValuePair<string, string>>();
+                codigos.Replace(" ", "");
+
+                FbConnection conexao = new FbConnection(Properties.Settings.Default.firebird);
+                conexao.Open();
+                string query = "select cast(a.produto as int) as produto,(A.ESTDISPONIVEL + A.ESTRESERVADO + A.ESTCONDICIONAL) as ESTECO from TESTESTOQUE A where cast(A.PRODUTO as int) in (" + codigos + ") group by 1,2;";
+                FbCommand cmd = new FbCommand(query, conexao);
+                FbDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    pdtEstoque.Add(new KeyValuePair<string, string>(reader["produto"].ToString(), reader["esteco"].ToString()));
+                }
+                conexao.Close();
+
+                await Task.Run(() =>
+                {
+                    pbr.MaximumValue = dgv.RowCount;
+                    pbr.Visible = true;
+
+                    foreach (DataGridViewRow row in dgv.Rows)
+                    {
+                        foreach (KeyValuePair<string, string> key in pdtEstoque)
+                        {
+                            if (row.Cells[0].Value.ToString() == key.Key)
+                            {
+                                row.Cells["estoqueEcoDataGridViewTextBoxColumn"].Value = key.Value;
+                            }
+                        }
+
+                        pbr.Value++;
+                    }
+
+                    pbr.Visible = false;
+                    pbr.Value = 0;
+                });
+
+
+            }
+            catch (Exception erro)
+            {
+                throw erro;
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
     }
 }

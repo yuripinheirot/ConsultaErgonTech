@@ -46,9 +46,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.metroTabControl = new MetroFramework.Controls.MetroTabControl();
             this.tabPedidos = new MetroFramework.Controls.MetroTabPage();
             this.dgvProdutos = new Bunifu.Framework.UI.BunifuCustomDataGrid();
@@ -83,9 +89,29 @@
             this.tbxNomeClientePed = new MetroFramework.Controls.MetroTextBox();
             this.tbxIdClientePed = new MetroFramework.Controls.MetroTextBox();
             this.tabEstoque = new MetroFramework.Controls.MetroTabPage();
-            this.bunifuProgressBar1 = new Bunifu.Framework.UI.BunifuProgressBar();
-            this.bunifuCustomDataGrid1 = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.progressBar = new Bunifu.Framework.UI.BunifuProgressBar();
+            this.dgvCompras = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.codProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numero1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numero2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numero3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numero4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reffornecedorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estoqueEcoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fornecedorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdVendidaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precoCompraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precoVendaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataUltimaCompraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdUltimaEntDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataUltimaVendaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codGrupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descGrupoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comprasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblCompras = new MetroFramework.Controls.MetroLabel();
+            this.btnExportar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnPesquisarEst = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tbxDtfEst = new MetroFramework.Controls.MetroDateTime();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
@@ -98,7 +124,7 @@
             this.tbxGrupoEst = new MetroFramework.Controls.MetroTextBox();
             this.tbxIdFornecedor = new MetroFramework.Controls.MetroTextBox();
             this.tabOrcamento = new MetroFramework.Controls.MetroTabPage();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.report1 = new FastReport.Report();
             this.metroTabControl.SuspendLayout();
             this.tabPedidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
@@ -107,7 +133,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pedidosBindingSource)).BeginInit();
             this.tabEstoque.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuCustomDataGrid1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comprasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.report1)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTabControl
@@ -119,7 +147,7 @@
             this.metroTabControl.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.metroTabControl.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl.Name = "metroTabControl";
-            this.metroTabControl.SelectedIndex = 0;
+            this.metroTabControl.SelectedIndex = 1;
             this.metroTabControl.Size = new System.Drawing.Size(948, 669);
             this.metroTabControl.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl.TabIndex = 0;
@@ -311,6 +339,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPedidos.AutoGenerateColumns = false;
+            this.dgvPedidos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvPedidos.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dgvPedidos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPedidos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -476,7 +505,7 @@
             this.tbxDtfPed.FontSize = MetroFramework.MetroDateTimeSize.Small;
             this.tbxDtfPed.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.tbxDtfPed.Location = new System.Drawing.Point(452, 26);
-            this.tbxDtfPed.MinimumSize = new System.Drawing.Size(0, 25);
+            this.tbxDtfPed.MinimumSize = new System.Drawing.Size(4, 25);
             this.tbxDtfPed.Name = "tbxDtfPed";
             this.tbxDtfPed.Size = new System.Drawing.Size(92, 25);
             this.tbxDtfPed.TabIndex = 3;
@@ -497,7 +526,7 @@
             this.tbxDtiPed.FontSize = MetroFramework.MetroDateTimeSize.Small;
             this.tbxDtiPed.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.tbxDtiPed.Location = new System.Drawing.Point(354, 26);
-            this.tbxDtiPed.MinimumSize = new System.Drawing.Size(0, 25);
+            this.tbxDtiPed.MinimumSize = new System.Drawing.Size(4, 25);
             this.tbxDtiPed.Name = "tbxDtiPed";
             this.tbxDtiPed.Size = new System.Drawing.Size(92, 25);
             this.tbxDtiPed.TabIndex = 2;
@@ -523,7 +552,7 @@
             // lblPedEncontrado
             // 
             this.lblPedEncontrado.AutoSize = true;
-            this.lblPedEncontrado.Location = new System.Drawing.Point(10, 62);
+            this.lblPedEncontrado.Location = new System.Drawing.Point(6, 62);
             this.lblPedEncontrado.Name = "lblPedEncontrado";
             this.lblPedEncontrado.Size = new System.Drawing.Size(145, 19);
             this.lblPedEncontrado.TabIndex = 12;
@@ -607,9 +636,10 @@
             // 
             // tabEstoque
             // 
-            this.tabEstoque.Controls.Add(this.bunifuProgressBar1);
-            this.tabEstoque.Controls.Add(this.bunifuCustomDataGrid1);
+            this.tabEstoque.Controls.Add(this.progressBar);
+            this.tabEstoque.Controls.Add(this.dgvCompras);
             this.tabEstoque.Controls.Add(this.lblCompras);
+            this.tabEstoque.Controls.Add(this.btnExportar);
             this.tabEstoque.Controls.Add(this.btnPesquisarEst);
             this.tabEstoque.Controls.Add(this.tbxDtfEst);
             this.tabEstoque.Controls.Add(this.metroLabel9);
@@ -634,32 +664,36 @@
             this.tabEstoque.VerticalScrollbarHighlightOnWheel = false;
             this.tabEstoque.VerticalScrollbarSize = 10;
             // 
-            // bunifuProgressBar1
+            // progressBar
             // 
-            this.bunifuProgressBar1.BackColor = System.Drawing.Color.Silver;
-            this.bunifuProgressBar1.BorderRadius = 5;
-            this.bunifuProgressBar1.Location = new System.Drawing.Point(12, 600);
-            this.bunifuProgressBar1.MaximumValue = 100;
-            this.bunifuProgressBar1.Name = "bunifuProgressBar1";
-            this.bunifuProgressBar1.ProgressColor = System.Drawing.Color.Teal;
-            this.bunifuProgressBar1.Size = new System.Drawing.Size(920, 10);
-            this.bunifuProgressBar1.TabIndex = 23;
-            this.bunifuProgressBar1.Value = 0;
-            this.bunifuProgressBar1.Visible = false;
+            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar.BackColor = System.Drawing.Color.Silver;
+            this.progressBar.BorderRadius = 5;
+            this.progressBar.Location = new System.Drawing.Point(12, 600);
+            this.progressBar.MaximumValue = 100;
+            this.progressBar.Name = "progressBar";
+            this.progressBar.ProgressColor = System.Drawing.Color.Teal;
+            this.progressBar.Size = new System.Drawing.Size(920, 10);
+            this.progressBar.TabIndex = 23;
+            this.progressBar.Value = 0;
+            this.progressBar.Visible = false;
             // 
-            // bunifuCustomDataGrid1
+            // dgvCompras
             // 
-            this.bunifuCustomDataGrid1.AllowUserToAddRows = false;
-            this.bunifuCustomDataGrid1.AllowUserToDeleteRows = false;
-            this.bunifuCustomDataGrid1.AllowUserToOrderColumns = true;
+            this.dgvCompras.AllowUserToAddRows = false;
+            this.dgvCompras.AllowUserToDeleteRows = false;
+            this.dgvCompras.AllowUserToOrderColumns = true;
             dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            this.bunifuCustomDataGrid1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
-            this.bunifuCustomDataGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvCompras.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            this.dgvCompras.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.bunifuCustomDataGrid1.BackgroundColor = System.Drawing.Color.Gainsboro;
-            this.bunifuCustomDataGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.bunifuCustomDataGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvCompras.AutoGenerateColumns = false;
+            this.dgvCompras.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvCompras.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.dgvCompras.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvCompras.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle17.BackColor = System.Drawing.Color.Teal;
             dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -667,43 +701,205 @@
             dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.DarkCyan;
             dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.bunifuCustomDataGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
-            this.bunifuCustomDataGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.bunifuCustomDataGrid1.DefaultCellStyle = dataGridViewCellStyle18;
-            this.bunifuCustomDataGrid1.DoubleBuffered = true;
-            this.bunifuCustomDataGrid1.EnableHeadersVisualStyles = false;
-            this.bunifuCustomDataGrid1.GridColor = System.Drawing.Color.Silver;
-            this.bunifuCustomDataGrid1.HeaderBgColor = System.Drawing.Color.Teal;
-            this.bunifuCustomDataGrid1.HeaderForeColor = System.Drawing.Color.White;
-            this.bunifuCustomDataGrid1.Location = new System.Drawing.Point(10, 84);
-            this.bunifuCustomDataGrid1.Name = "bunifuCustomDataGrid1";
-            this.bunifuCustomDataGrid1.ReadOnly = true;
-            this.bunifuCustomDataGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.bunifuCustomDataGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
-            this.bunifuCustomDataGrid1.RowHeadersVisible = false;
-            this.bunifuCustomDataGrid1.RowHeadersWidth = 25;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomDataGrid1.RowsDefaultCellStyle = dataGridViewCellStyle20;
-            this.bunifuCustomDataGrid1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.bunifuCustomDataGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.bunifuCustomDataGrid1.Size = new System.Drawing.Size(922, 496);
-            this.bunifuCustomDataGrid1.StandardTab = true;
-            this.bunifuCustomDataGrid1.TabIndex = 6;
+            this.dgvCompras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            this.dgvCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvCompras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codProdutoDataGridViewTextBoxColumn,
+            this.descProdutoDataGridViewTextBoxColumn,
+            this.numeroDataGridViewTextBoxColumn1,
+            this.numero1DataGridViewTextBoxColumn,
+            this.numero2DataGridViewTextBoxColumn,
+            this.numero3DataGridViewTextBoxColumn,
+            this.numero4DataGridViewTextBoxColumn,
+            this.reffornecedorDataGridViewTextBoxColumn,
+            this.estoqueEcoDataGridViewTextBoxColumn,
+            this.fornecedorDataGridViewTextBoxColumn,
+            this.qtdVendidaDataGridViewTextBoxColumn,
+            this.precoCompraDataGridViewTextBoxColumn,
+            this.precoVendaDataGridViewTextBoxColumn,
+            this.dataUltimaCompraDataGridViewTextBoxColumn,
+            this.qtdUltimaEntDataGridViewTextBoxColumn,
+            this.dataUltimaVendaDataGridViewTextBoxColumn,
+            this.codGrupo,
+            this.descGrupoDataGridViewTextBoxColumn});
+            this.dgvCompras.DataSource = this.comprasBindingSource;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCompras.DefaultCellStyle = dataGridViewCellStyle23;
+            this.dgvCompras.DoubleBuffered = true;
+            this.dgvCompras.EnableHeadersVisualStyles = false;
+            this.dgvCompras.GridColor = System.Drawing.Color.Silver;
+            this.dgvCompras.HeaderBgColor = System.Drawing.Color.Teal;
+            this.dgvCompras.HeaderForeColor = System.Drawing.Color.White;
+            this.dgvCompras.Location = new System.Drawing.Point(10, 84);
+            this.dgvCompras.Name = "dgvCompras";
+            this.dgvCompras.ReadOnly = true;
+            this.dgvCompras.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCompras.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            this.dgvCompras.RowHeadersVisible = false;
+            this.dgvCompras.RowHeadersWidth = 25;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvCompras.RowsDefaultCellStyle = dataGridViewCellStyle25;
+            this.dgvCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCompras.Size = new System.Drawing.Size(922, 496);
+            this.dgvCompras.StandardTab = true;
+            this.dgvCompras.TabIndex = 6;
+            // 
+            // codProdutoDataGridViewTextBoxColumn
+            // 
+            this.codProdutoDataGridViewTextBoxColumn.DataPropertyName = "codProduto";
+            this.codProdutoDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.codProdutoDataGridViewTextBoxColumn.Name = "codProdutoDataGridViewTextBoxColumn";
+            this.codProdutoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codProdutoDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // descProdutoDataGridViewTextBoxColumn
+            // 
+            this.descProdutoDataGridViewTextBoxColumn.DataPropertyName = "descProduto";
+            this.descProdutoDataGridViewTextBoxColumn.HeaderText = "Produto";
+            this.descProdutoDataGridViewTextBoxColumn.Name = "descProdutoDataGridViewTextBoxColumn";
+            this.descProdutoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descProdutoDataGridViewTextBoxColumn.Width = 250;
+            // 
+            // numeroDataGridViewTextBoxColumn1
+            // 
+            this.numeroDataGridViewTextBoxColumn1.DataPropertyName = "numero";
+            this.numeroDataGridViewTextBoxColumn1.HeaderText = "Número";
+            this.numeroDataGridViewTextBoxColumn1.Name = "numeroDataGridViewTextBoxColumn1";
+            this.numeroDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // numero1DataGridViewTextBoxColumn
+            // 
+            this.numero1DataGridViewTextBoxColumn.DataPropertyName = "numero1";
+            this.numero1DataGridViewTextBoxColumn.HeaderText = "Número1";
+            this.numero1DataGridViewTextBoxColumn.Name = "numero1DataGridViewTextBoxColumn";
+            this.numero1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // numero2DataGridViewTextBoxColumn
+            // 
+            this.numero2DataGridViewTextBoxColumn.DataPropertyName = "numero2";
+            this.numero2DataGridViewTextBoxColumn.HeaderText = "Número2";
+            this.numero2DataGridViewTextBoxColumn.Name = "numero2DataGridViewTextBoxColumn";
+            this.numero2DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // numero3DataGridViewTextBoxColumn
+            // 
+            this.numero3DataGridViewTextBoxColumn.DataPropertyName = "numero3";
+            this.numero3DataGridViewTextBoxColumn.HeaderText = "Número3";
+            this.numero3DataGridViewTextBoxColumn.Name = "numero3DataGridViewTextBoxColumn";
+            this.numero3DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // numero4DataGridViewTextBoxColumn
+            // 
+            this.numero4DataGridViewTextBoxColumn.DataPropertyName = "numero4";
+            this.numero4DataGridViewTextBoxColumn.HeaderText = "Número4";
+            this.numero4DataGridViewTextBoxColumn.Name = "numero4DataGridViewTextBoxColumn";
+            this.numero4DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // reffornecedorDataGridViewTextBoxColumn
+            // 
+            this.reffornecedorDataGridViewTextBoxColumn.DataPropertyName = "reffornecedor";
+            this.reffornecedorDataGridViewTextBoxColumn.HeaderText = "Ref. Fornecedor";
+            this.reffornecedorDataGridViewTextBoxColumn.Name = "reffornecedorDataGridViewTextBoxColumn";
+            this.reffornecedorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // estoqueEcoDataGridViewTextBoxColumn
+            // 
+            this.estoqueEcoDataGridViewTextBoxColumn.DataPropertyName = "estoqueEco";
+            dataGridViewCellStyle18.Format = "N2";
+            this.estoqueEcoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle18;
+            this.estoqueEcoDataGridViewTextBoxColumn.HeaderText = "Estoque";
+            this.estoqueEcoDataGridViewTextBoxColumn.Name = "estoqueEcoDataGridViewTextBoxColumn";
+            this.estoqueEcoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fornecedorDataGridViewTextBoxColumn
+            // 
+            this.fornecedorDataGridViewTextBoxColumn.DataPropertyName = "fornecedor";
+            this.fornecedorDataGridViewTextBoxColumn.HeaderText = "Fornecedor";
+            this.fornecedorDataGridViewTextBoxColumn.Name = "fornecedorDataGridViewTextBoxColumn";
+            this.fornecedorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qtdVendidaDataGridViewTextBoxColumn
+            // 
+            this.qtdVendidaDataGridViewTextBoxColumn.DataPropertyName = "qtdVendida";
+            dataGridViewCellStyle19.Format = "N2";
+            this.qtdVendidaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle19;
+            this.qtdVendidaDataGridViewTextBoxColumn.HeaderText = "Qtd vendida";
+            this.qtdVendidaDataGridViewTextBoxColumn.Name = "qtdVendidaDataGridViewTextBoxColumn";
+            this.qtdVendidaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // precoCompraDataGridViewTextBoxColumn
+            // 
+            this.precoCompraDataGridViewTextBoxColumn.DataPropertyName = "precoCompra";
+            dataGridViewCellStyle20.Format = "N2";
+            this.precoCompraDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle20;
+            this.precoCompraDataGridViewTextBoxColumn.HeaderText = "Preço compra";
+            this.precoCompraDataGridViewTextBoxColumn.Name = "precoCompraDataGridViewTextBoxColumn";
+            this.precoCompraDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // precoVendaDataGridViewTextBoxColumn
+            // 
+            this.precoVendaDataGridViewTextBoxColumn.DataPropertyName = "precoVenda";
+            dataGridViewCellStyle21.Format = "N2";
+            this.precoVendaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle21;
+            this.precoVendaDataGridViewTextBoxColumn.HeaderText = "Preço venda";
+            this.precoVendaDataGridViewTextBoxColumn.Name = "precoVendaDataGridViewTextBoxColumn";
+            this.precoVendaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dataUltimaCompraDataGridViewTextBoxColumn
+            // 
+            this.dataUltimaCompraDataGridViewTextBoxColumn.DataPropertyName = "dataUltimaCompra";
+            this.dataUltimaCompraDataGridViewTextBoxColumn.HeaderText = "Data última compra";
+            this.dataUltimaCompraDataGridViewTextBoxColumn.Name = "dataUltimaCompraDataGridViewTextBoxColumn";
+            this.dataUltimaCompraDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qtdUltimaEntDataGridViewTextBoxColumn
+            // 
+            this.qtdUltimaEntDataGridViewTextBoxColumn.DataPropertyName = "qtdUltimaEnt";
+            dataGridViewCellStyle22.Format = "N2";
+            this.qtdUltimaEntDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle22;
+            this.qtdUltimaEntDataGridViewTextBoxColumn.HeaderText = "Qtd última entrada";
+            this.qtdUltimaEntDataGridViewTextBoxColumn.Name = "qtdUltimaEntDataGridViewTextBoxColumn";
+            this.qtdUltimaEntDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dataUltimaVendaDataGridViewTextBoxColumn
+            // 
+            this.dataUltimaVendaDataGridViewTextBoxColumn.DataPropertyName = "dataUltimaVenda";
+            this.dataUltimaVendaDataGridViewTextBoxColumn.HeaderText = "Data última venda";
+            this.dataUltimaVendaDataGridViewTextBoxColumn.Name = "dataUltimaVendaDataGridViewTextBoxColumn";
+            this.dataUltimaVendaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // codGrupo
+            // 
+            this.codGrupo.DataPropertyName = "codGrupo";
+            this.codGrupo.HeaderText = "Cod grupo";
+            this.codGrupo.Name = "codGrupo";
+            this.codGrupo.ReadOnly = true;
+            // 
+            // descGrupoDataGridViewTextBoxColumn
+            // 
+            this.descGrupoDataGridViewTextBoxColumn.DataPropertyName = "descGrupo";
+            this.descGrupoDataGridViewTextBoxColumn.HeaderText = "Desc. grupo";
+            this.descGrupoDataGridViewTextBoxColumn.Name = "descGrupoDataGridViewTextBoxColumn";
+            this.descGrupoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // comprasBindingSource
+            // 
+            this.comprasBindingSource.DataMember = "compras";
+            this.comprasBindingSource.DataSource = this.dsMain;
             // 
             // lblCompras
             // 
@@ -713,6 +909,41 @@
             this.lblCompras.Size = new System.Drawing.Size(152, 19);
             this.lblCompras.TabIndex = 22;
             this.lblCompras.Text = "Compras encontradas: 0";
+            // 
+            // btnExportar
+            // 
+            this.btnExportar.Activecolor = System.Drawing.Color.Teal;
+            this.btnExportar.BackColor = System.Drawing.Color.Teal;
+            this.btnExportar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnExportar.BorderRadius = 0;
+            this.btnExportar.ButtonText = "&Exportar";
+            this.btnExportar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExportar.DisabledColor = System.Drawing.Color.Gray;
+            this.btnExportar.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnExportar.Iconimage = global::ConsultaErgonTech.Properties.Resources.search_32px;
+            this.btnExportar.Iconimage_right = null;
+            this.btnExportar.Iconimage_right_Selected = null;
+            this.btnExportar.Iconimage_Selected = null;
+            this.btnExportar.IconMarginLeft = 0;
+            this.btnExportar.IconMarginRight = 0;
+            this.btnExportar.IconRightVisible = false;
+            this.btnExportar.IconRightZoom = 0D;
+            this.btnExportar.IconVisible = false;
+            this.btnExportar.IconZoom = 40D;
+            this.btnExportar.IsTab = false;
+            this.btnExportar.Location = new System.Drawing.Point(832, 26);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Normalcolor = System.Drawing.Color.Teal;
+            this.btnExportar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnExportar.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnExportar.selected = false;
+            this.btnExportar.Size = new System.Drawing.Size(100, 25);
+            this.btnExportar.TabIndex = 5;
+            this.btnExportar.Text = "&Exportar";
+            this.btnExportar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnExportar.Textcolor = System.Drawing.Color.White;
+            this.btnExportar.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // btnPesquisarEst
             // 
@@ -747,6 +978,7 @@
             this.btnPesquisarEst.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnPesquisarEst.Textcolor = System.Drawing.Color.White;
             this.btnPesquisarEst.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisarEst.Click += new System.EventHandler(this.btnPesquisarEst_Click);
             // 
             // tbxDtfEst
             // 
@@ -880,6 +1112,7 @@
             this.tbxGrupoEst.UseSelectable = true;
             this.tbxGrupoEst.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbxGrupoEst.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbxGrupoEst.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxGrupoEst_KeyDown);
             // 
             // tbxIdFornecedor
             // 
@@ -928,9 +1161,12 @@
             this.tabOrcamento.VerticalScrollbarHighlightOnWheel = false;
             this.tabOrcamento.VerticalScrollbarSize = 10;
             // 
-            // timer1
+            // report1
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.report1.NeedRefresh = false;
+            this.report1.ReportResourceString = resources.GetString("report1.ReportResourceString");
+            this.report1.Tag = null;
+            this.report1.RegisterData(this.dsMain, "dsMain");
             // 
             // frmMain
             // 
@@ -942,7 +1178,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmMain";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta ErgonTech";
+            this.Load += new System.EventHandler(this.frmMain_Load_1);
             this.metroTabControl.ResumeLayout(false);
             this.tabPedidos.ResumeLayout(false);
             this.tabPedidos.PerformLayout();
@@ -953,7 +1191,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pedidosBindingSource)).EndInit();
             this.tabEstoque.ResumeLayout(false);
             this.tabEstoque.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuCustomDataGrid1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comprasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.report1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -994,7 +1234,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn precounitarioDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descontogeeralDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalliquidoDataGridViewTextBoxColumn;
-        private Bunifu.Framework.UI.BunifuCustomDataGrid bunifuCustomDataGrid1;
+        private Bunifu.Framework.UI.BunifuCustomDataGrid dgvCompras;
         public MetroFramework.Controls.MetroLabel lblCompras;
         public Bunifu.Framework.UI.BunifuFlatButton btnPesquisarEst;
         public MetroFramework.Controls.MetroDateTime tbxDtfEst;
@@ -1008,7 +1248,27 @@
         public MetroFramework.Controls.MetroTextBox tbxGrupoEst;
         public MetroFramework.Controls.MetroTextBox tbxIdFornecedor;
         private MetroFramework.Controls.MetroTabPage tabOrcamento;
-        private System.Windows.Forms.Timer timer1;
-        private Bunifu.Framework.UI.BunifuProgressBar bunifuProgressBar1;
+        private Bunifu.Framework.UI.BunifuProgressBar progressBar;
+        public Bunifu.Framework.UI.BunifuFlatButton btnExportar;
+        private System.Windows.Forms.BindingSource comprasBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codProdutoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descProdutoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numeroDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numero1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numero2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numero3DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numero4DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn reffornecedorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estoqueEcoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fornecedorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtdVendidaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precoCompraDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precoVendaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataUltimaCompraDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtdUltimaEntDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataUltimaVendaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codGrupo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descGrupoDataGridViewTextBoxColumn;
+        private FastReport.Report report1;
     }
 }

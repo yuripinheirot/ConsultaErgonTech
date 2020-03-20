@@ -128,6 +128,7 @@
             // clienteDataGridViewTextBoxColumn
             // 
             this.clienteDataGridViewTextBoxColumn.DataPropertyName = "cliente";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clienteDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.clienteDataGridViewTextBoxColumn.HeaderText = "Cliente";
@@ -196,7 +197,6 @@
             this.tbxPalavraChave.MaxLength = 32767;
             this.tbxPalavraChave.Name = "tbxPalavraChave";
             this.tbxPalavraChave.PasswordChar = '\0';
-            this.tbxPalavraChave.PromptText = "Palavra chave";
             this.tbxPalavraChave.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbxPalavraChave.SelectedText = "";
             this.tbxPalavraChave.SelectionLength = 0;
@@ -273,6 +273,7 @@
             this.MinimizeBox = false;
             this.Name = "frmMainCliente";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
             this.Load += new System.EventHandler(this.frmMainCliente_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmMainCliente_KeyDown);
@@ -291,12 +292,12 @@
         private MetroFramework.Controls.MetroTextBox tbxPalavraChave;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private Bunifu.Framework.UI.BunifuFlatButton btnInserir;
+        private System.Windows.Forms.BindingSource clienteBindingSource;
+        private dsCliente dsCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn clienteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn foneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn celularDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cpfCnpjDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource clienteBindingSource;
-        private dsCliente dsCliente;
     }
 }

@@ -15,3 +15,10 @@ C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\obj\Debug\Co
 C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\obj\Debug\ConsultaErgonTech.exe
 C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\obj\Debug\ConsultaErgonTech.pdb
 C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\obj\Debug\ConsultaErgonTech.csprojAssemblyReference.cache
+C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\obj\Debug\ConsultaErgonTech.Rotinas.Grupo.frmMainGrupo.resources
+C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\bin\Debug\FastReport.Data.MySql.dll
+C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\bin\Debug\FastReport.dll
+C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\bin\Debug\MySql.Data.dll
+C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\bin\Debug\FastReport.Bars.dll
+C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\bin\Debug\FastReport.Editor.dll
+C:\Users\yurie\Documents\Github\ConsultaErgonTech\ConsultaErgonTech\bin\Debug\FastReport.xml
