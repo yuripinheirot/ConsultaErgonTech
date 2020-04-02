@@ -15,6 +15,7 @@ namespace ConsultaErgonTech.Rotinas.Cliente
     {
         //inicializadores
         frmMain main;
+        public bool orcamento = false;
 
         //metodos
         void atualizaDgv()
@@ -78,8 +79,17 @@ namespace ConsultaErgonTech.Rotinas.Cliente
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            main.tbxIdClientePed.Text = dgvCliente.CurrentRow.Cells[0].Value.ToString();
-            main.tbxNomeClientePed.Text = dgvCliente.CurrentRow.Cells[1].Value.ToString();
+            if (orcamento == true)
+            {
+                main.tbxIdClienteOrc.Text = dgvCliente.CurrentRow.Cells[0].Value.ToString();
+                main.tbxNomeClienteOrc.Text = dgvCliente.CurrentRow.Cells[1].Value.ToString();
+            }
+            else
+            {
+                main.tbxIdClientePed.Text = dgvCliente.CurrentRow.Cells[0].Value.ToString();
+                main.tbxNomeClientePed.Text = dgvCliente.CurrentRow.Cells[1].Value.ToString();
+            }
+
             Close();
         }
 

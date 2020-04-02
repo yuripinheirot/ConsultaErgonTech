@@ -10,14 +10,14 @@ using System.Configuration;
 using System.Windows.Forms;
 using FirebirdSql.Data.FirebirdClient;
 using Bunifu.Framework.UI;
+using System.IO;
 
 namespace ConsultaErgonTech.Main
 {
     class dataMain
     {
-
-        public static string server = Properties.Settings.Default.sqlserver;
-        public static SqlConnection conexao = null;
+        static SqlConnection conexao = null;
+        static string server = Properties.Settings.Default.sqlserver;
 
         //PEDIDOS
         public static void AtualizaDgvPedido(BunifuCustomDataGrid dgv, string idCliente, string dti, string dtf)
@@ -263,6 +263,92 @@ namespace ConsultaErgonTech.Main
             {
                 conexao.Close();
             }
+        }
+
+        //ORCAMENTO
+        public static void AtualizaDgvOrcamento(BunifuCustomDataGrid dgv, string idCliente,string status, string dti, string dtf)
+        {
+            try
+            {
+                conexao = new SqlConnection(server);
+                conexao.Open();
+                string query =
+                    "SELECT                                                       " +
+                    "orc.codigo,                                                  " +
+                    "cast(orc.[Data] as date) as data,                            " +
+                    "concat(orc.Cliente,'-',clt.Descricao ) as cliente,           " +
+                    "vdd.Descricao as vendedor,                                   " +
+                    "orc.Obs ,                                                    " +
+                    "orc.Descontos ,                                              " +
+                    "orc.TotalVenda ,                                             " +
+                    "orc.Comprador ,                                              " +
+                    "case                                                         " +
+                    "when orc.Fechada = 0 then 'NÃO' else 'SIM'                   " +
+                    "end as fechada                                               " +
+                    "from orcamento orc                                           " +
+                    "left outer join clientes clt on (orc.Cliente = clt.Codigo)   " +
+                    "left outer join Vendedor vdd on (orc.Vendedor = vdd.Codigo ) " +
+                    "left outer join Planos pag on (orc.Plano = pag.Codigo )      " +
+                    "WHERE                                                        " +
+                    "cast(orc.[Data] as date) between @dti and @dtf               " + idCliente + status +
+                    "order by orc.[Data] desc                                     ";
+                SqlCommand cmd = new SqlCommand(query, conexao);
+                cmd.Parameters.AddWithValue("@dti", dti);
+                cmd.Parameters.AddWithValue("@dtf", dtf);
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                DataTable table = new DataTable();
+                adapter.SelectCommand = cmd;
+                adapter.Fill(table);
+                dgv.DataSource = table;
+            }
+            catch (Exception erro)
+            {
+                throw erro;
+            }
+            finally
+            {
+                conexao.Close();
+            }
+
+        }
+
+        public static void AtualizaDgvOrcProduto(BunifuCustomDataGrid dgv, string idPedido)
+        {
+            try
+            {
+                conexao = new SqlConnection(server);
+                conexao.Open();
+                string query =
+                    "SELECT                                                    " +
+                    "pdt.Codigo,                                               " +
+                    "ior.descricao as  produto,                                " +
+                    "ior.Numero,                                               " +
+                    "ior.Qtd as qtde,                                          " +
+                    "ior.PrecoVenda ,                                          " +
+                    "ior.Desconto$  as desconto                                " +
+                    "FROM ItemsOrc ior                                         " +
+                    "left outer join Orcamento orc on(ior.Codigo = orc.Codigo) " +
+                    "left outer join Produtos pdt on(ior.Produto = pdt.Codigo) " +
+                    "WHERE                                                     " +
+                    "ior.Codigo = @codigo                                      ";
+
+                SqlCommand cmd = new SqlCommand(query, conexao);
+                cmd.Parameters.AddWithValue("@codigo", idPedido);
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                DataTable table = new DataTable();
+                adapter.SelectCommand = cmd;
+                adapter.Fill(table);
+                dgv.DataSource = table;
+            }
+            catch (Exception erro)
+            {
+                throw erro;
+            }
+            finally
+            {
+                conexao.Close();
+            }
+
         }
     }
 }

@@ -1,0 +1,4 @@
+﻿Data source=YURI;
+Initial Catalog=BD_TRATORPECAS;
+UID=sas;
+pwd=masterkey

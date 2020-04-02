@@ -57,5 +57,17 @@ namespace ConsultaErgonTech.Properties {
                 this["firebird"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ouifghoisufhasuhdfoisuhdf")]
+        public string cachorro {
+            get {
+                return ((string)(this["cachorro"]));
+            }
+            set {
+                this["cachorro"] = value;
+            }
+        }
     }
 }

@@ -22,5 +22,8 @@ pwd=masterkey</Value>
  Packet Size=8192;   
  ServerType=0 ;</Value>
     </Setting>
+    <Setting Name="cachorro" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ouifghoisufhasuhdfoisuhdf</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
